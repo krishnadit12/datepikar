@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Itim&family=Josefin+Sans:wght@700&family=Manrope:wght@700&family=Montserrat:ital@0;1&family=Poppins:wght@300&family=Roboto:wght@700&family=Ubuntu:wght@500&family=Yeon+Sung&display=swap"
+    rel="stylesheet">
+  <style>
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap");
+body {
+  background: black;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  transition: all 0.4s ease;
+  font-family: "Nunito Sans", sans-serif;
+}
+#box {
+  width: 280px;
+  height: fit-content;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 0 20px 10px rgba(0, 0, 0, 0.17);
+  backdrop-filter: blur(25px);
+  border-bottom: solid 7px #0081c7;
+  border-radius: 7px;
+  color: whitesmoke;
+  text-align: center;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#two {
+  height: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+#month {
+  background: #0081c7;
+  padding: 10px 0;
+  font-size: 22px;
+}
+#day,
+#year {
+  font-size: 20px;
+}
+#date {
+  font-size: 120px;
+  font-weight: 700;
+  margin: -5px 0;
+}
+.balls {
+  position: absolute;
+  top: 58%;
+  left: 59%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(330deg, orangered, orange, yellow);
+  border-radius: 50%;
+}
+.balls:nth-child(1) {
+  top: 48%;
+  left: 41%;
+  background: linear-gradient(120deg, purple, blue);
+}
+
+    
+  </style>
+</head>
+
+<body>
+  <div class="balls"></div>
+<div class="balls"></div>
+<div id="box">
+  <div>
+    <div id="month"></div>
+  </div>
+  <div id="two">
+    <div id="day"></div>
+    <div id="date"></div>
+    <div id="year"></div>
+  </div>
+</div>
+
+
+
+<script>
+  var date = document.getElementById("date"),
+  day = document.getElementById("day"),
+  month = document.getElementById("month"),
+  year = document.getElementById("year"),
+  days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ],
+  months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+function update() {
+  let now = new Date();
+  date.innerText = now.getDate();
+  day.innerText = days[now.getDay()];
+  month.innerText = months[now.getMonth()];
+  year.innerText = now.getFullYear();
+}
+
+document.body.onload = () => {
+  setInterval(update, 1000);
+  setTimeout(() => {
+    document.getElementById("two").style.height = "260px";
+    document.getElementById("box").style.color = "gainsboro";
+  }, 500);
+};
+
+</script>
+</body>
+</html>
